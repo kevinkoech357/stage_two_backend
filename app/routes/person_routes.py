@@ -11,9 +11,14 @@ def create_person():
     try:
         name = request.json['name']
 
-        # Validate if name is string
-        if not isinstance(name, str):
-            return jsonify({'error': 'Name must be a string'}), 400
+       # Check if 'name' field is missing or blank
+        if not name or not isinstance(name, str) or name.strip() == "":
+            return jsonify({'error': 'Name must be a non-empty string'}), 400
+
+        # Check if a person with the same name already exists
+        existing_person = Person.query.filter_by(name=name).first()
+        if existing_person:
+            return jsonify({'error': 'Person with the same name already exists'}), 409  # 409 Conflict status code
 
         new_person = Person(name=name)
         db.session.add(new_person)
@@ -22,7 +27,7 @@ def create_person():
         return person_schema.jsonify(new_person), 201
 
     except KeyError:
-        return jsonify({'error': 'Name fiels is empty'}), 400
+        return jsonify({'error': 'Name field is empty'}), 400
 
     except ValidationError as e:
         return jsonify({'error': e.messages}), 400
