@@ -53,8 +53,6 @@ def get_person_by_id(person_id):
     except ValueError:
         return jsonify({'error': 'Invalid id format'}), 400
 
-
-
 @person_routes.route('/api/<string:name>', methods=['GET'])
 def get_person_by_name(name):
     try:
@@ -99,6 +97,24 @@ def update_person(person_id):
 
     except ValidationError as e:
         return jsonify({'error': e.messages}), 400
+
+@person_routes.route('/api/all', methods=['GET'])
+def get_all_persons():
+    try:
+        # Query all person records from the database
+        all_persons = Person.query.all()
+
+        # Check if any persons were found
+        if not all_persons:
+            return jsonify({'message': 'No persons found'}), 404
+
+        # Serialize the list of persons to JSON
+        persons_json = [person_schema.dump(person) for person in all_persons]
+
+        return jsonify(persons_json)
+
+    except Exception as e:
+        return jsonify({'error': 'An error occurred while fetching persons'}), 500
 
 @person_routes.route('/api/<int:person_id>', methods=['DELETE'])
 def delete_person(person_id):
