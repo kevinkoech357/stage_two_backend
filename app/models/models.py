@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-from flask_sqlalchemy import Column, Integer, String
+from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
-from .app.databse.db import db
+from app.database.db import db
 
-app = Marshmallow()
+ma = Marshmallow()
 
 class Person(db.Model):
     '''
