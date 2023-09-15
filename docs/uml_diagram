@@ -1,0 +1,11 @@
++----------------+
+|    Person      |
++----------------+
+| - id : int     |
+| - name : string|
++----------------+
+| + add_person(name) : Person |
+| + get_person(id) : Person |
+| + update_person(id, name) : Person |
+| + delete_person(id) : void |
++----------------+
