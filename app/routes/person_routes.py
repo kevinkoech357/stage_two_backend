@@ -117,7 +117,7 @@ def get_all_persons():
         return jsonify({'error': 'An error occurred while fetching persons'}), 500
 
 @person_routes.route('/api/<int:person_id>', methods=['DELETE'])
-def delete_person(person_id):
+def delete_person_by_id(person_id):
     try:
         # Check if 'person_id' is an integer
         if not isinstance(person_id,int):
