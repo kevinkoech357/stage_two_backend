@@ -5,7 +5,10 @@
 | - name : string|
 +----------------+
 | + add_person(name) : Person |
-| + get_person(id) : Person |
-| + update_person(id, name) : Person |
-| + delete_person(id) : void |
+| + get_person_by_id(id) : Person |
+| + get_person_by_name(name): Person |
+| + update_person(id) : Person |
+| + get_all_persons(): Person |
+| + delete_person_by_id(id) : void |
+| + delete_person_by_name(name): void |
 +----------------+
