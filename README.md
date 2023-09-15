@@ -67,3 +67,6 @@ curl -X DELETE http://localhost:8000/api/1
 ```
 ### Using Postman
 Visit https://www.postman.com/kevinkoech357/workspace/hng-stage-two-internship/collection/29637783-a59d3879-5053-4704-958e-d97db1f62021?action=share&creator=29637783 to check collection and add more tests.
+
+### UML Diagram
+Navigate to docs and open uml_diagram or click https://github.com/kevinkoech357/stage_two_backend/blob/main/docs/uml_diagram
